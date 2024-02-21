@@ -1,0 +1,30 @@
+title: About
+
+icon: 🐉
+
+options:
+  url: false
+  status: false
+  delete: false
+  duplicate: false
+  changeStatus: false
+  changePosition: false
+  changeTitle: false
+
+sections:
+  main:
+    type: fields
+    fields:
+      about:
+        label: About text
+        type: textarea 
+      social:
+        label: Social media
+        type: structure
+        fields:
+          network:
+            label: Social Network
+            type: text
+          link:
+            label: Link
+            type: url

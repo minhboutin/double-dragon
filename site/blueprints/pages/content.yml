@@ -1,0 +1,20 @@
+title: Content
+
+sections:
+
+  #main
+  main:
+    type: fields
+    fields:
+      year:
+        label: Year
+        type: text
+      client:
+        label: Client and Place
+        type: text
+      event:
+        label: Event's description
+        type: textarea
+      tags:
+        label: Tags 
+        type: tags

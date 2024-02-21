@@ -1,0 +1,59 @@
+title: Home
+
+icon: 🏠
+
+options:
+  url: false
+  status: false
+  delete: false
+  duplicate: false
+  changeStatus: false
+  changePosition: false
+  changeTitle: false
+
+sections:
+  main:
+    type: fields
+    fields:
+      contents:
+        label: Contents Media Left
+        type: structure
+        fields:
+          media:
+            label: Image/Video
+            type: files 
+            multiple: false
+            required: true
+          content:
+            label: Content
+            type: pages
+            query: site.find('index')
+            multiple: false
+            required: true
+          video_orientation:
+            label: If the media is a video, precise format
+            type: radio
+            options: 
+              landscape: Landscape
+              portrait: Portrait
+              square: Square
+      contents2:
+        label: Contents Media Right
+        type: structure
+        fields:
+          media:
+            label: Image/Video
+            type: files 
+            multiple: false
+          content:
+            label: Content
+            type: pages
+            query: site.find('index')
+            multiple: false
+          video_orientation:
+            label: If the media is a video, precise format
+            type: radio
+            options: 
+              landscape: Landscape
+              portrait: Portrait
+              square: Square

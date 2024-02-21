@@ -1,0 +1,648 @@
+/* Main */
+
+@font-face {
+  font-family: "Fira Code";
+  src:
+    url("./fonts/FiraCode-Regular.otf") format("truetype")
+}
+html {
+  font-family: "Fira Code", monospace;
+  font-optical-sizing: auto;
+  font-size: 14px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  color: #FFF;
+  background: #000;
+  cursor: auto;
+}
+
+body {
+	margin: 0;
+}
+
+.wrapper {
+  visibility: hidden;
+}
+
+* {
+  margin: 0;
+	padding: 0;
+}
+
+a {
+	color: #FFF;
+	text-decoration: none;
+}
+
+element:hovered {
+-webkit-user-select: none;
+-webkit-touch-callout: none;        
+}
+
+::selection {
+  color: #000;
+  background: #FFF;
+}
+
+main {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 0;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  mix-blend-mode: difference;
+  transition: filter 0.5s;
+  z-index: 2;
+}
+
+header a.nav {
+  margin: 20px;
+  text-transform: uppercase;
+}
+
+header img.logo {
+  width: 380px;
+  height: auto;
+}
+
+/* Fader */
+
+.fade {
+  transition: opacity 0.1s 0.1s;
+  opacity: 0;
+}
+
+/* Skew grid */
+
+.container {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  display: block;
+  transform-origin: top;
+  -ms-overflow-style: none;  
+  scrollbar-width: none;
+}
+
+.container::-webkit-scrollbar, .container::scrollbar {
+  display: none !important;
+  width: 0;
+  background-color: #000;
+}
+
+.container.hovered {
+  z-index: 1 !important;
+}
+
+.container.not-hovered {
+  z-index: 0 !important;
+}
+
+.skew.left {
+  /*transform: skew( var(--angle) );*/
+  left: -100%;
+  padding-left: 100%;
+}
+
+.skew.right {
+  /*transform: skew( var(--angle) );*/
+  left: -200px;
+  padding-left: 100%;
+}
+
+.skew > * {
+  display: block;
+  /*transform: skew( - var(--angle) );*/
+  transform-origin: top;
+}
+
+
+#container div.content:first-child {
+  margin-top: 20px;
+  margin-left: -35px;
+}
+
+.content {
+  position: relative;
+  transition: opacity 0.2s;
+  overflow: visible;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
+
+.content .media {
+  transform: scale(0.98);
+  transform-origin: center;
+  transition: all 0.1s;
+  box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.3); 
+}
+
+/* Sizes left container */
+
+/* ONE */
+
+.skew.left .one.landscape {
+  width: 120px;
+  height: fit-content;
+  margin-bottom: -80px;
+}
+
+.skew.left .one.landscape .media {
+  width: 120px;
+}
+
+.skew.left .one.portrait {
+  width: 120px;
+  height: fit-content;
+  margin-left: 20px;
+  margin-bottom: -100px;
+}
+
+.skew.left .one.portrait .media {
+  height: 100px;
+}
+
+.skew.left .one.square {
+  width: 100px;
+  height: 100px;
+  margin-bottom: -50px;
+}
+
+.skew.left .one.square .media {
+  width: 100px;
+  height: 100px;
+}
+
+/* TWO */
+
+.skew.left .two.landscape {
+  width: 215px;
+  height: fit-content;
+  margin-bottom: -90px;
+}
+
+.skew.left .two.landscape .media {
+  width: 215px;
+}
+
+.skew.left .two.portrait {
+  width: 100px;
+  height: fit-content;
+  margin-left: -50px;
+}
+
+.skew.left .two.portrait .media {
+  height: 160px;
+}
+
+.skew.left .two.square {
+  width: 130px;
+  height: fit-content;
+  margin-left: 30px;
+  margin-bottom: -80px;
+}
+
+.skew.left .two.square .media {
+  width: 130px;
+}
+
+/* THREE */
+
+.skew.left .three.landscape {
+  width: 325px;
+  height: fit-content;
+  margin-bottom: -100px;
+}
+
+.skew.left .three.landscape .media {
+  width: 325px;
+}
+
+.skew.left .three.portrait {
+  height: 200px;
+  max-width: 200px;
+  width: fit-content;
+  margin-bottom: -110px;
+  margin-left: 50px;
+}
+
+.skew.left .three.portrait .media {
+  height: 200px;
+}
+
+.skew.left .three.square {
+  width: 200px;
+  height: fit-content;
+  margin-left: -20px;
+  margin-bottom: -80px;
+}
+
+.skew.left .three.square .media {
+  width: 200px;
+}
+
+/* FOUR */
+
+.skew.left .four.landscape {
+  width: 420px;
+  height: fit-content;
+  margin-left: -20px;
+  margin-bottom: -150px;
+}
+
+.skew.left .four.landscape .media {
+  width: 420px;
+}
+
+.skew.left .four.portrait {
+  width: 420px;
+  height: fit-content;
+  margin-bottom: -260px;
+}
+
+.skew.left .four.portrait .media {
+  height: 360px;
+}
+
+.skew.left .four.square {
+  width: 200px;
+  height: 200px;
+  margin-left: -30px;
+  margin-bottom: -50px;
+}
+
+.skew.left .four.square .media {
+  height: 400px;
+}
+
+/* FIVE */
+
+.skew.left .five {
+  margin-top: -20px;
+}
+
+.skew.left .five.landscape {
+  width: 450px;
+  height: fit-content;
+  margin-left: -40px;
+  margin-bottom: -200px;
+}
+
+.skew.left .five.landscape .media {
+  width: 450px;
+}
+
+.skew.left .five.portrait {
+  width: 280px;
+  height: fit-content;
+  margin-left: 40px;
+  margin-bottom: -240px;
+}
+
+.skew.left .five.portrait .media {
+  width: 280px;
+}
+
+.skew.left .five.square {
+  width: 300px;
+  height: fit-content;
+  margin-bottom: -150px;
+  margin-left: -20px;
+}
+
+.skew.left .five.square .media {
+  width: 300px;
+}
+
+/* Sizes right container */
+
+/* ONE */
+
+.skew.right .one.landscape {
+  width: 200px;
+  height: fit-content;
+  margin-left: 50px;
+  margin-bottom: -120px;
+}
+
+.skew.right .one.landscape .media {
+  width: 200px;
+}
+
+.skew.right .one.portrait {
+  width: fit-content;
+  height: 180px;
+  margin-left: 60px;
+  margin-bottom: -50px;
+}
+
+.skew.right .one.portrait .media {
+  height: 180px;
+}
+
+.skew.right .one.square {
+  width: 100px;
+  height: 100px;
+  margin-bottom: -30px;
+}
+
+.skew.right .one.square .media {
+  width: 100px;
+  height: 100px;
+}
+
+/* TWO */
+
+.skew.right .two.landscape {
+  width: 250px;
+  height: fit-content;
+  margin-bottom: -100px;
+}
+
+.skew.right .two.landscape .media {
+  width: 250px;
+}
+
+.skew.right .two.portrait {
+  height: 240px;
+  max-width: 180px;
+  margin-left: 0;
+  margin-bottom: -100px;
+}
+
+.skew.right .two.portrait .media {
+  height: 240px;
+}
+
+.skew.right .two.square {
+  width: 130px;
+  height: 130px;
+  margin-right: 30px;
+  margin-bottom: -50px;
+}
+
+.skew.right .two.square .media {
+  width: 130px;
+}
+
+/* THREE */
+
+.skew.right .three.landscape {
+  width: 350px;
+  height: fit-content;
+  margin-left: -80px;
+  margin-bottom: -160px;
+}
+
+.skew.right .three.landscape .media {
+  width: 350px;
+}
+
+.skew.right .three.portrait {
+  height: 250px;
+  width: fit-content;
+  margin-left: 60px;
+  margin-top: -150px;
+}
+
+.skew.right .three.portrait .media {
+  height: 250px;
+}
+
+.skew.right .three.square {
+  height: 200px;
+  width: 200px;
+  margin-left: -20px;
+  margin-bottom: -50px;
+}
+
+.skew.right .three.square .media {
+  width: 200px;
+}
+
+/* FOUR */
+
+.skew.right .four.landscape {
+  width: 350px;
+  height: fit-content;
+  margin-bottom: -150px;
+}
+
+.skew.right .four.landscape .media {
+  width: 350px;
+}
+
+.skew.right .four.portrait {
+  max-width: 200px;
+  width: fit-content;
+  height: fit-content;
+  margin-left: 60px;
+  margin-bottom: -230px;
+}
+
+.skew.right .four.portrait .media {
+  height: 300px;
+}
+
+.skew.right .four.square {
+  width: 300px;
+  height: 300px;
+  margin-left: -30px;
+  margin-bottom: -50px;
+}
+
+.skew.right .four.square .media {
+  height: 300px;
+}
+
+/* FIVE */
+
+.skew.right .five.landscape {
+  width: 450px;
+  height: fit-content;
+  margin-left: -120px;
+  margin-bottom: -150px;
+}
+
+.skew.right .five.landscape .media {
+  width: 450px;
+}
+
+.skew.right .five.portrait {
+  max-width: 170px;
+  height: fit-content;
+  margin-left: 40px;
+  margin-bottom: -250px;
+}
+
+.skew.right .five.portrait .media {
+  height: 360px;
+}
+
+.skew.right .five.square {
+  width: 150px;
+  height: 150px;
+  margin-left: -20px;
+  margin-top: -50px;
+}
+
+.skew.right .five.square .media {
+  width: 300px;
+}
+
+/* Content Info */
+
+.content .info {
+  width: 100%;
+  white-space: nowrap;
+  margin-top: 10px;
+  opacity: 0;
+  display: grid;
+  pointer-events: none;
+  transition: all 0.2s;
+}
+
+/* Content Interaction  */
+
+.content.hovered {
+  z-index: 100 !important;
+}
+
+.content.hovered .media {
+  transform: scale(1);
+}
+
+.content.hovered .info {
+  display: grid;
+  pointer-events: all;
+  opacity: 1;
+}
+
+.content.not-hovered {
+  z-index: -1;
+}
+
+#header.not-hovered {
+  z-index: -1;
+}
+
+.blurry {
+  filter: blur(5px);
+}
+
+.black-filter {
+  position: absolute;
+  top: -500%;
+  left: -500%;
+  width: 1000%;
+  height: 1000%;
+  pointer-events: none;
+  background-color: #000;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 2;
+  overflow: hidden;
+  display: none;
+}
+
+.black-filter.hovered {
+  opacity: 0.75;
+}
+
+/* INDEX OF PROJECTS */
+
+#index-of-projects {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  overflow-y: scroll;
+}
+
+#index-of-projects::-webkit-scrollbar {
+  display: none !important;
+  width: 0;
+  background-color: #000;
+}
+
+#index-of-projects ul {
+  display: inline-block;
+}
+
+#index-of-projects ul li {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 25px;
+  list-style-type: none;
+}
+
+#index-of-projects ul li p.title, p.description {
+  margin-bottom: 10px;
+}
+
+#index-of-projects ul li:first-child {
+  padding-top: 20px;
+}
+
+#index-of-projects ul li:last-child {
+  padding-bottom: 20px;
+}
+
+/* ABOUT PAGE */
+
+#about {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#about p, li {
+  text-transform: uppercase;
+}
+
+#about div.about {
+  margin-top: 25px;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+#about ul li {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 25px;
+  list-style-type: none;
+}
+
+#textFlag {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+}
+
+
+/* FONTS */
+
+.small {
+  font-size: 12px;
+}
+
+

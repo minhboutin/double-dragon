@@ -1,0 +1,30 @@
+Title: Mairie de Marseille
+
+----
+
+Year: 2023
+
+----
+
+Client: 14th of July Celebration @Marseille
+
+----
+
+Event: Institutional event for citizens
+
+----
+
+Description:
+
+14th of July Celebration @ Marseille
+Institutional event for citizens
+
+(link: https://example.com text: Learn more target: _blank)
+
+----
+
+Tags: Creative, Production & Coordination
+
+----
+
+Uuid: AkbadGc4mO6V5U2B

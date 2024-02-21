@@ -1,0 +1,26 @@
+Title: About
+
+----
+
+About:
+
+PARIS
+MARSEILLE
+Storage/Delivery
+
+----
+
+Social:
+
+- 
+  network: Linkedin
+  link: >
+    https://www.linkedin.com/company/doubledragon
+- 
+  network: Instagram
+  link: >
+    https://www.instagram.com/__double.dragon__/
+
+----
+
+Uuid: Fj1AukMQryywMz81

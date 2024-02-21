@@ -1,0 +1,25 @@
+Title: Night Embassy
+
+----
+
+Year: 2023
+
+----
+
+Client: Client @Place
+
+----
+
+Event: Lorem ipsum dolor sit amet, consectetur adipiscing
+
+----
+
+Description: Lorem ipsum dolor sit amet, consectetur adipiscing
+
+----
+
+Tags: Creative
+
+----
+
+Uuid: QNvzlEhCtlz0L92c

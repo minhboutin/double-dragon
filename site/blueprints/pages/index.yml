@@ -1,0 +1,19 @@
+title: Index of contents
+
+icon: 📄
+
+options:
+  url: true
+  status: true
+  delete: true
+  duplicate: true
+  changeStatus: true
+  changePosition: true
+  changeTitle: true
+
+sections:
+  pages:
+    type: pages
+    layout: list
+    templates: 
+      - content
