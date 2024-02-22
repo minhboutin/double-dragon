@@ -1,6 +1,9 @@
 $(document).ready(function() {
   
-  // Skew les div en fonction du ratio de la fenêtre pour faire les diagonales
+
+  // Skew les div container et contents
+  // en fonction du ratio de la fenêtre pour l'alignement diagonal
+
 
   function radians_to_degrees(radians){
     var pi = Math.PI;
@@ -30,7 +33,9 @@ $(document).ready(function() {
   window.addEventListener('load',function() { changeSkew(); });
   window.addEventListener('resize',function() { changeSkew(); });
 
-  // Synchronize scroll of containers
+
+  // Synchronize scroll of two containers
+
 
   var element1 = document.getElementById('container-left');
   var element2 = document.getElementById('container-right');
@@ -98,7 +103,10 @@ $(document).ready(function() {
       element1.addEventListener('scroll', syncScroll);    
   } 
 
-  // Scroll loop
+
+  // Test pour looper le scroll 
+  // à partir de cet exemple : https://codepen.io/vincentorback/pen/OpdNJa
+
 
   var doc = window.document,
   context = doc.querySelector('.js-loop.left'),
@@ -152,7 +160,7 @@ $(document).ready(function() {
     }
   }
 
-  console.log(document.getElementById('container-left').scrollHeight)
+  // console.log(document.getElementById('container-left').scrollHeight)
 
   function scrollUpdate () {
     if (!disableScroll) {
@@ -192,13 +200,17 @@ $(document).ready(function() {
   // setScrollPos(Math.round(clones[0].getBoundingClientRect().top + getScrollPos() - (context.offsetHeight - clones[0].offsetHeight) / 2));
   // };
 
+
   // Fade In
 
   $('.fade').css('opacity', 1)
 
-  // Même scrollHeight pour les deux containers
 
-/*
+  // Même scrollHeight pour les deux containers
+  // (non nécessaire si le scroll entre les deux divs est proportionnel)
+
+
+  /*
   var lowerDivHeight = lowerDiv.get(0).scrollHeight;
   var upperDivHeight = upperDiv.get(0).scrollHeight;
 
@@ -214,7 +226,10 @@ $(document).ready(function() {
     console.log(lowerDiv.get(0).scrollHeight, upperDiv.get(0).scrollHeight)
   }*/
 
-  // Synchronize scroll of 2 divs
+
+
+  // Test de scroll automatique
+
 
   function autoScroll(){
     $('#container-left').animate({ scrollTop: $('#container-left').get(0).scrollHeight }, 80000,"linear", function(){
@@ -224,14 +239,20 @@ $(document).ready(function() {
 
   autoScroll();
 
+  // Le scroll automatique s'arrête au hover sur un contenu
+
   $('.media').hover( function() {
     $('#container-left').stop();
   })
+
+  // Le scroll automatique reprend au mouseleave
 
   $('.media').on('mouseleave', function() {
     autoScroll();
     $('#header').removeClass('not-hovered').removeClass('blurry');
   })
+
+  // Le scroll automatique s'arrête au scroll manuel puis reprend
 
   $('.container').on('mousewheel', function(){
     $('#container-left').stop();
@@ -242,7 +263,10 @@ $(document).ready(function() {
       }, 25));
   });
 
-  // Gestionnaire d'événement pour ajouter les classes au survol
+
+  // Gestionnaire d'événement pour ajouter les classes au survol sur la div container inférieure
+  // (pour détecter le mouseenter sur le contenu même si la div container a un z-index inférieur)
+
 
   var lowerDiv = $("#container-right");
   var upperDiv = $("#container-left");
@@ -301,7 +325,7 @@ $(document).ready(function() {
     $(this).addClass('hovered' );
 
     $('#header').addClass('not-hovered').addClass('blurry');
-    $('.black-filter').addClass('hovered');
+    // $('.black-filter').addClass('hovered');
 
     $('#container-left').addClass('hovered').removeClass('not-hovered');
     $('#container-right').addClass('not-hovered').removeClass('hovered');
@@ -314,9 +338,7 @@ $(document).ready(function() {
     $(this).removeClass('hovered');
 
     $('#header').removeClass('not-hovered').removeClass('blurry');
-    $('.black-filter').removeClass('hovered');
+    // $('.black-filter').removeClass('hovered');
   });
-
-  // Loop Scroll
 
 });
