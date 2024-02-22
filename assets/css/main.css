@@ -1,10 +1,16 @@
+/* Font */
+
+@font-face{
+  font-family: 'Fira Code';
+  src: url('../fonts/FiraCode-Regular.eot') format('embedded-opentype'),
+       url('../fonts/FiraCode-Regular.woff') format('woff'),
+       url('../fonts/FiraCode-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Main */
 
-@font-face {
-  font-family: "Fira Code";
-  src:
-    url("./fonts/FiraCode-Regular.otf") format("truetype")
-}
 html {
   font-family: "Fira Code", monospace;
   font-optical-sizing: auto;
@@ -18,6 +24,13 @@ html {
 
 body {
 	margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body.about {
+  overflow: hidden !important;
 }
 
 .wrapper {
@@ -147,7 +160,6 @@ header img.logo {
 .content .media {
   transform: scale(0.98);
   transform-origin: center;
-  transition: all 0.1s;
   box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.3); 
 }
 
@@ -507,13 +519,15 @@ header img.logo {
 /* Content Info */
 
 .content .info {
+  position: absolute;
+  bottom: -50px;
   width: 100%;
   white-space: nowrap;
-  margin-top: 10px;
   opacity: 0;
   display: grid;
   pointer-events: none;
-  transition: all 0.2s;
+  transition: opacity 0.1s;
+  backface-visibility: hidden;
 }
 
 /* Content Interaction  */
@@ -523,7 +537,25 @@ header img.logo {
 }
 
 .content.hovered .media {
+  animation-name: bounce;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
+  animation-duration: normal;
+  animation-iteration-count: 1;
   transform: scale(1);
+    -webkit-transform: scale(1);
+}
+
+@keyframes bounce {
+  from {
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+  }
+
+  to {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
 }
 
 .content.hovered .info {
@@ -582,17 +614,22 @@ header img.logo {
 
 #index-of-projects ul {
   display: inline-block;
+  max-width: 348px;
 }
 
 #index-of-projects ul li {
   width: 100%;
   text-align: center;
-  padding-bottom: 25px;
   list-style-type: none;
 }
 
-#index-of-projects ul li p.title, p.description {
-  margin-bottom: 10px;
+#index-of-projects ul li.project {
+  margin-bottom: 30px;
+}
+
+#index-of-projects ul li p {
+  margin-bottom: 12px;
+  line-height: 1.2;
 }
 
 #index-of-projects ul li:first-child {
@@ -603,46 +640,73 @@ header img.logo {
   padding-bottom: 20px;
 }
 
+#index-of-projects ul li.year {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#index-of-projects ul li.year:first-child {
+  margin-top: 0;
+}
+
+#index-of-projects ul li a.learn-more {
+  text-transform: uppercase;
+}
+
 /* ABOUT PAGE */
 
 #about {
   position: absolute;
-  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-between;
+}
+
+#about p, #about li {
+  text-transform: uppercase;
+}
+
+#about div.external-links {
+  width: 100%;
+}
+
+#about ul li {
+  list-style-type: none;
+}
+
+#about div.external-links ul {
+  position: absolute;
+  top: 50%;
+  margin-top: 60px;
+}
+
+#about ul {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-#about p, li {
-  text-transform: uppercase;
-}
-
-#about div.about {
-  margin-top: 25px;
-  margin-bottom: 20px;
-  width: 100%;
-  text-align: center;
-}
-
 #about ul li {
-  width: 100%;
-  text-align: center;
-  padding-bottom: 25px;
-  list-style-type: none;
+  margin: 20px;
 }
 
-#textFlag {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
+#about div.external-links li {
+  margin-top: 0;
 }
 
-
-/* FONTS */
-
-.small {
-  font-size: 12px;
+#about div.social ul li img {
+  width: auto;
+  height: 25px;
 }
+
+#about-text {
+  display: none;
+}
+
+/* RESPONSIVE */
 
 

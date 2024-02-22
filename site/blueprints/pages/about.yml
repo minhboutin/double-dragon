@@ -15,16 +15,30 @@ sections:
   main:
     type: fields
     fields:
+      text:
+        label: About text 
+        type: textarea
       about:
-        label: About text
-        type: textarea 
+        label: External links
+        type: structure
+        fields:
+          text:
+            label: Text 
+            type: text
+          link:
+            label: Link (url)
+            type: url
       social:
         label: Social media
         type: structure
         fields:
           network:
-            label: Social Network
+            label: Social Network links
             type: text
+          picto:
+            label: Pictogram
+            type: files 
+            multiple: false
           link:
-            label: Link
+            label: Link (url)
             type: url

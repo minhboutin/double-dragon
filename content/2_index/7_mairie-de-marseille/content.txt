@@ -14,16 +14,20 @@ Event: Institutional event for citizens
 
 ----
 
+Tags: Creative, Production & Coordination
+
+----
+
+Link: https://example.com
+
+----
+
 Description:
 
 14th of July Celebration @ Marseille
 Institutional event for citizens
 
 (link: https://example.com text: Learn more target: _blank)
-
-----
-
-Tags: Creative, Production & Coordination
 
 ----
 

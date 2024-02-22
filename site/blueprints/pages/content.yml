@@ -9,12 +9,20 @@ sections:
       year:
         label: Year
         type: text
+        required: true
       client:
         label: Client and Place
         type: text
+        required: true
       event:
         label: Event's description
         type: textarea
+        required: true
       tags:
         label: Tags 
         type: tags
+        required: true
+      link:
+        label: Add external link
+        type: url
+        required: false

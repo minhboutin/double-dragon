@@ -1,4 +1,4 @@
-Title: Spotify ✗ Rayban
+Title: Spotify x Rayban
 
 ----
 
@@ -10,15 +10,19 @@ Client: Client @Place
 
 ----
 
-Event: Neque porro quisquam est qui dolorem ipsum
-
-----
-
-Description: Neque porro quisquam est qui dolorem ipsum
+Event: Neque porro quisquam est
 
 ----
 
 Tags: Creative
+
+----
+
+Link: https://example.com
+
+----
+
+Description: Neque porro quisquam est qui dolorem ipsum
 
 ----
 

@@ -10,15 +10,22 @@ Client: Client @Place
 
 ----
 
-Event: Neque porro quisquam est qui dolorem ipsum
+Event:
 
-----
-
-Description: Neque porro quisquam est qui dolorem ipsum
+Neque porro quisquam 
+<br>Est qui dolorem ipsum
 
 ----
 
 Tags: Creative
+
+----
+
+Link: https://example.com
+
+----
+
+Description: Neque porro quisquam est qui dolorem ipsum
 
 ----
 

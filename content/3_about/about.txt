@@ -2,24 +2,43 @@ Title: About
 
 ----
 
+Text: DOUBLE DRAGON is a creative event production company led by creativity and stimulated by creative challenges
+
+----
+
 About:
 
-PARIS
-MARSEILLE
-Storage/Delivery
+- 
+  text: Paris
+  link: https://example.com
+- 
+  text: Marseille
+  link: http://example.com
+- 
+  text: Storage/Delivery
+  link: http://example.com
 
 ----
 
 Social:
 
 - 
+  network: Instagram
+  picto:
+    - file://nSWcX5Sv2Szh1hTj
+  link: >
+    https://www.instagram.com/__double.dragon__/
+- 
   network: Linkedin
+  picto:
+    - file://sOvqDFjmFCxDe5sh
   link: >
     https://www.linkedin.com/company/doubledragon
 - 
-  network: Instagram
-  link: >
-    https://www.instagram.com/__double.dragon__/
+  network: Whatsapp
+  picto:
+    - file://VtkhgUNMXcZxdjIi
+  link: http://example.com
 
 ----
 

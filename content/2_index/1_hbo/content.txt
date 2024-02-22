@@ -14,14 +14,18 @@ Event: Tv Show Premiere
 
 ----
 
+Tags: Creative
+
+----
+
+Link: https://example.com
+
+----
+
 Description:
 
 The Idol @Cannes
 Tv Show Premiere
-
-----
-
-Tags: Creative
 
 ----
 

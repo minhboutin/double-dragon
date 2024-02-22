@@ -1,4 +1,4 @@
-Title: Hennesy ✗ Faith47
+Title: Hennesy x Faith47
 
 ----
 
@@ -10,15 +10,19 @@ Client: Client @Place
 
 ----
 
-Event: Neque porro quisquam est qui dolorem ipsum
-
-----
-
-Description: Neque porro quisquam est qui dolorem ipsum
+Event: Quisquam est qui dolorem ipsum
 
 ----
 
 Tags: Creative
+
+----
+
+Link: https://example.com
+
+----
+
+Description: Neque porro quisquam est qui dolorem ipsum
 
 ----
 

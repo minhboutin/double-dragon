@@ -10,15 +10,19 @@ Client: Client @Place
 
 ----
 
-Event: Lorem ipsum dolor sit amet, consectetur adipiscing
-
-----
-
-Description: Lorem ipsum dolor sit amet, consectetur adipiscing
+Event: Lorem ipsum dolor sit amet<br>Consectetur adipiscing
 
 ----
 
 Tags: Creative
+
+----
+
+Link: https://example.com
+
+----
+
+Description: Lorem ipsum dolor sit amet, consectetur adipiscing
 
 ----
 

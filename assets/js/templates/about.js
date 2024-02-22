@@ -1,10 +1,6 @@
-// Text Flag
+function JSFX_StartEffects() {
+  var aboutText = document.getElementById('about-text').innerHTML;
+  JSFX.MakeTextFlag(aboutText, "#FFF", "", 4);
+}
 
-window.addEventListener("load", (event) => {
-  new cursoreffects.textFlag({ 
-    element: document.querySelector("#textFlag"),
-    text: 'DOUBLE DRAGON is a production company led by creativity and stimulated by creative challenges',
-    color: '#FFFFFF',
-    font: 'Fira Code'
-  })
-});
+window.onload = JSFX_StartEffects();

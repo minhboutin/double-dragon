@@ -1,4 +1,4 @@
-Title: Hennessy ✗ NBA
+Title: Hennessy x NBA
 
 ----
 
@@ -14,14 +14,18 @@ Event: Influencers’ Trip 
 
 ----
 
+Tags: Creative, Production, Logistics & Coordination
+
+----
+
+Link: https://example.com
+
+----
+
 Description:
 
 NBA Paris Game @Paris & Cognac
 Influencers’ Trip 
-
-----
-
-Tags: Creative, Production, Logistics & Coordination
 
 ----
 

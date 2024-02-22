@@ -1,4 +1,4 @@
-Title: Hennessy ✗ Twins
+Title: Hennessy x Twins
 
 ----
 
@@ -14,14 +14,18 @@ Event: 3D Activation open to the public
 
 ----
 
+Tags: Executive Production
+
+----
+
+Link: https://example.com
+
+----
+
 Description:
 
 Air Max Day @Paris
 3D Activation open to the public
-
-----
-
-Tags: Executive Production
 
 ----
 
