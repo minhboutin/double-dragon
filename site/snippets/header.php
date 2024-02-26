@@ -29,17 +29,34 @@
   </head>
   <body class="<?= $page->template() ?>">
 
-  <main id="main">
-    <header id="header">
-      <?php if($page->template() == 'index'): ?>
-        <a href="<?= $site->url() ?>" class="nav">Close</a>
-      <?php else: ?>
-      <a href="<?= $site->url() ?>/index" class="nav">Index</a>
-      <?php endif ?>
-      <a href="<?= $site->url() ?>"><img class="logo" src="<?= $site->url() ?>/assets/logo/LOGO-DOUBLE-DRAGON-WHITE.svg"></a>
-      <?php if($page->template() == 'about'): ?>
-        <a href="<?= $site->url() ?>" class="nav">Close</a>
-      <?php else: ?>
-      <a href="<?= $site->url() ?>/about" class="nav">About</a>
-      <?php endif ?>
-    </header>
+    <?php if($page->template() == 'home'): ?>
+    <div id="loader" class="load">
+      <video autoplay muted loop playsinline crossorigin="anonymous"
+      poster="<?= $site->url() ?>/assets/video/dragons-loader.jpg">
+          <source src="<?= $site->url() ?>/assets/video/dragons-loader.mp4" type="video/mp4">
+      </video>
+    </div>
+    <?php endif ?>
+
+    <main id="main"<?php if($page->template() == 'home' ): ?> class="home"<?php endif ?>>
+      <header id="header">
+        <a href="<?= $site->url() ?>"><img class="logo" src="<?= $site->url() ?>/assets/logo/LOGO-DOUBLE-DRAGON-WHITE.svg"></a>
+      </header>
+
+      <div class="nav left">
+        <?php if($page->template() == 'index'): ?><a href="<?= $site->url() ?>">
+            Close
+          </a>
+          <?php else: ?><a href="<?= $site->url() ?>/index">
+            Index
+            </a><?php endif ?>
+      </div>
+
+      <div class="nav right">
+        <?php if($page->template() == 'about'): ?><a href="<?= $site->url() ?>">
+          Close
+        </a>
+        <?php else: ?><a href="<?= $site->url() ?>/about">
+          About
+        </a><?php endif ?>
+      </div>

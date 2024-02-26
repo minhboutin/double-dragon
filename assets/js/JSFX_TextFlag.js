@@ -23,7 +23,7 @@ JSFX.TextFlag = function(textStr, textColor, textFont,  textSize)
 	this.gap   		= 3*textSize;
 	this.angle		= 0;
 	this.radiusX 	= 2;
-	this.radiusY 	= 3;
+	this.radiusY 	= 5;
 	this.followMode 	= 0;
 
 	this.charArray=new Array();

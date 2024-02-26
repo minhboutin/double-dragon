@@ -2,7 +2,15 @@ Title: About
 
 ----
 
-Text: DOUBLE DRAGON is a creative event production company led by creativity and stimulated by creative challenges
+Text: DOUBLE DRAGON is a creative event production company
+
+----
+
+Manifesto:
+
+DOUBLE DRAGON is a creative event production house led by challenges and bold creative concepts. They partner with brands to create unique & purposeful events since 2020.
+
+With former experience in luxury houses and advertising, the 3 partners collaborate with leading brands and institutions to deliver outstanding event concepts, and produce them accordingly through covering a large skill set.
 
 ----
 
@@ -15,7 +23,7 @@ About:
   text: Marseille
   link: http://example.com
 - 
-  text: Storage/Delivery
+  text: 'Storage & Delivery'
   link: http://example.com
 
 ----
@@ -24,21 +32,24 @@ Social:
 
 - 
   network: Instagram
-  picto:
-    - file://nSWcX5Sv2Szh1hTj
   link: >
     https://www.instagram.com/__double.dragon__/
+  picto:
+    - file://nSWcX5Sv2Szh1hTj
 - 
   network: Linkedin
-  picto:
-    - file://sOvqDFjmFCxDe5sh
   link: >
     https://www.linkedin.com/company/doubledragon
-- 
-  network: Whatsapp
   picto:
-    - file://VtkhgUNMXcZxdjIi
-  link: http://example.com
+    - file://sOvqDFjmFCxDe5sh
+
+----
+
+Whatsapp: https://api.whatsapp.com/send?phone=33677507336
+
+----
+
+Mail: info@double-dragon.fr
 
 ----
 

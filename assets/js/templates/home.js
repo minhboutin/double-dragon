@@ -1,9 +1,20 @@
 $(document).ready(function() {
-  
 
-  // Skew les div container et contents
+  // Le scroll automatique s'arrête au hover sur un contenu
+
+  $('.media').hover( function() {
+    $('#container-left').stop();
+    $('#container-right').stop();
+  })
+
+  // Le scroll automatique reprend au mouseleave
+
+  $('.media').on('mouseleave', function() {
+    autoScroll();
+  })
+
+  // 1. Skew les div container et contents
   // en fonction du ratio de la fenêtre pour l'alignement diagonal
-
 
   function radians_to_degrees(radians){
     var pi = Math.PI;
@@ -20,6 +31,9 @@ $(document).ready(function() {
     invertAngle = - angle;
   }
 
+  setAngle();
+  changeSkew();
+
   function changeSkew(){
     setAngle();
 
@@ -33,17 +47,15 @@ $(document).ready(function() {
   window.addEventListener('load',function() { changeSkew(); });
   window.addEventListener('resize',function() { changeSkew(); });
 
+  // 2. Synchronize scroll of two containers
 
-  // Synchronize scroll of two containers
-
-
-  var element1 = document.getElementById('container-left');
-  var element2 = document.getElementById('container-right');
+  var containerLeft = document.getElementById('container-left');
+  var containerRight = document.getElementById('container-right');
 
   var activeTouch = null;
   var touchStartY = 0;
-  var element1StartScrollTop = 0;
-  var element2scrollSyncFactor = 0;
+  var containerLeftStartScrollTop = 0;
+  var containerRightscrollSyncFactor = 0;
 
   document.addEventListener('touchstart', function(event) {
       event.preventDefault();
@@ -53,7 +65,7 @@ $(document).ready(function() {
       if ( activeTouch == null ) {
           activeTouch = touch;
           touchStartY = touch.screenY;
-          element1StartScrollTop = element1.scrollTop;
+          containerLeftStartScrollTop = containerLeft.scrollTop;
           // if scroll content does not change do this calculation only once to safe compute time while animating
           calcSyncFactor();
       }
@@ -61,21 +73,20 @@ $(document).ready(function() {
 
   function calcSyncFactor()
   {
-    element2scrollSyncFactor = (element2.scrollHeight - element2.clientHeight) / (element1.scrollHeight - element1.clientHeight);    
+    containerRightscrollSyncFactor = (containerRight.scrollHeight - containerRight.clientHeight) / (containerLeft.scrollHeight - containerLeft.clientHeight);    
   }
 
-  element1.addEventListener('touchend', touchEnd);
-  element1.addEventListener('touchcancel', touchEnd);
+  containerLeft.addEventListener('touchend', touchEnd);
+  containerLeft.addEventListener('touchcancel', touchEnd);
 
-  function touchEnd(event)
-  {
-      for ( var i = 0; i < event.changedTouches.length; i++ ) {
-          var touch = event.changedTouches[i];
-          if ( touch === activeTouch ) {
-              activeTouch = null;
-              break;
-          }
-      }    
+  function touchEnd(event) {
+    for ( var i = 0; i < event.changedTouches.length; i++ ) {
+        var touch = event.changedTouches[i];
+        if ( touch === activeTouch ) {
+            activeTouch = null;
+            break;
+        }
+    }    
   }
 
   document.addEventListener('touchmove', function() {
@@ -84,7 +95,7 @@ $(document).ready(function() {
           
           if ( touch === activeTouch ) {
               var yOffset = touch.screenY - touchStartY;
-              element1.scrollTop = element1StartScrollTop + (0 - yOffset);
+              containerLeft.scrollTop = containerLeftStartScrollTop + (0 - yOffset);
               syncScroll();
               break;
           }
@@ -93,180 +104,134 @@ $(document).ready(function() {
 
   function syncScroll()
   {
-      element2.scrollTop = Math.round(element1.scrollTop * element2scrollSyncFactor);
+      containerRight.scrollTop = Math.round(containerLeft.scrollTop * containerRightscrollSyncFactor);
   }
 
   var touchSupported = 'ontouchstart' in document.documentElement;
 
   if ( !touchSupported ) {
-      calcSyncFactor();
-      element1.addEventListener('scroll', syncScroll);    
+    calcSyncFactor();
+    containerLeft.addEventListener('scroll', syncScroll);    
   } 
-
-
-  // Test pour looper le scroll 
-  // à partir de cet exemple : https://codepen.io/vincentorback/pen/OpdNJa
-
-
-  var doc = window.document,
-  context = doc.querySelector('.js-loop.left'),
-  items = context.querySelectorAll('.content'),
-  disableScroll = false,
-  scrollHeight = 0,
-  scrollPos = 0,
-  clonesHeight = 0,
-  i = 0;
-
-  function cloneContents() {
-    const container = $('#container-right');
-    const contents = $('.content');
-
-    contents.each(function() {
-      const clone = $(this).clone(true);
-      clone.addClass('is-clone'); // Add the is-clone class to the clone
-      container.append(clone);
-    });
-  }
-
-  // cloneContents();
-
-  var clones = context.querySelectorAll('.js-clone');
-
-  function getScrollPos () {
-    return (context.pageYOffset || context.scrollTop) - (context.clientTop || 0);
-  }
-
-  function setScrollPos (pos) {
-    context.scrollTop = pos;
-  }
-
-  function getClonesHeight () {
-    clonesHeight = 0;
-
-    for (i = 0; i < clones.length; i += 1) {
-      clonesHeight = clonesHeight + clones[i].offsetHeight;
-    }
-
-    return clonesHeight;
-  }
-
-  function reCalc () {
-    scrollPos = getScrollPos();
-    scrollHeight = context.scrollHeight;
-    clonesHeight = getClonesHeight();
-
-    if (scrollPos <= 0) {
-      setScrollPos(1); // Scroll 1 pixel to allow upwards scrolling
-    }
-  }
-
-  // console.log(document.getElementById('container-left').scrollHeight)
-
-  function scrollUpdate () {
-    if (!disableScroll) {
-      scrollPos = getScrollPos();
-
-    if (scrollPos >= 2265) {
-      // Scroll to the top when you’ve reached the bottom
-      setScrollPos(1); // Scroll down 1 pixel to allow upwards scrolling
-      disableScroll = true;
-    } else if (scrollPos <= 0) {
-      // Scroll to the bottom when you reach the top
-      setScrollPos(scrollHeight - clonesHeight);
-      disableScroll = true;
-    }
-  }
-
-    if (disableScroll) {
-    // Disable scroll-jumping for a short time to avoid flickering
-      window.setTimeout(function () {
-        disableScroll = false;
-      }, 40);
-    }
-  }
-
-  window.requestAnimationFrame(reCalc);
-
-  context.addEventListener('scroll', function () {
-    window.requestAnimationFrame(scrollUpdate);
-  }, false);
-
-  window.addEventListener('resize', function () {
-    window.requestAnimationFrame(reCalc);
-  }, false);
-
-  // Just for this demo: Center the middle block on page load
-  // window.onload = function () {
-  // setScrollPos(Math.round(clones[0].getBoundingClientRect().top + getScrollPos() - (context.offsetHeight - clones[0].offsetHeight) / 2));
-  // };
-
 
   // Fade In
 
-  $('.fade').css('opacity', 1)
+  $('.fade').css('opacity', 1);
 
+  // Charles new scroll loop
 
-  // Même scrollHeight pour les deux containers
-  // (non nécessaire si le scroll entre les deux divs est proportionnel)
+  const setScroll = (side) => {
+    // scrollable div
+    var contentDiv = document.getElementById(`container-${side}`);
+    const children = Array.from(contentDiv.childNodes); // Convert childNodes list to an array
 
+    children.forEach(child => {
+      if (child.nodeType === Node.ELEMENT_NODE) { // Ensure we're cloning element nodes
+        const clone = child.cloneNode(true); // Clone the child node deeply
+        contentDiv.appendChild(clone); // Append the cloned node to the div
+      }
+    });
 
-  /*
-  var lowerDivHeight = lowerDiv.get(0).scrollHeight;
-  var upperDivHeight = upperDiv.get(0).scrollHeight;
+    window.addEventListener("wheel", function (event) {
+      event.preventDefault;
 
-  if(lowerDivHeight > upperDivHeight){
-    var difference = lowerDivHeight - upperDivHeight;
-    upperDiv.find('.content').last().css('margin', difference);
-    console.log(lowerDiv.get(0).scrollHeight, upperDiv.get(0).scrollHeight)
+      var newScrollPosition = contentDiv.scrollTop += event.deltaY;
+
+      // Apply the new scroll position to your div
+      contentDiv.scrollTop = newScrollPosition;
+
+      if (contentDiv.scrollTop >= contentDiv.offsetHeight) {
+        contentDiv.scrollTop = 0;
+      } else if (contentDiv.scrollTop <= 0) {
+        contentDiv.scrollTop = contentDiv.offsetHeight;
+      }
+    });
   }
 
-  if(upperDivHeight > lowerDivHeight){
-    var difference = upperDivHeight - lowerDivHeight;
-    lowerDiv.find('.content').last().css('margin', difference);
-    console.log(lowerDiv.get(0).scrollHeight, upperDiv.get(0).scrollHeight)
-  }*/
+  setScroll('left');
+  setScroll('right');
+
+  // Initialize scroll
+
+  const initScroll = (side) => {
+    document.getElementById(`container-${side}`).scrollTop = 0;
+  }
+
+  initScroll('left');
+  initScroll('right');
+
+  // Debug : check scroll 
+
+  var interval = self.setInterval(function(){ checkScroll() }, 1);
+
+  function checkScroll(){
+
+    // console.log(
+    //   'scrollTop of container-left:',
+    //   $('#container-left').scrollTop(),
+    //   'scrollHeight of container-left:',
+    //   $('#container-left').get(0).scrollHeight)
+
+    // console.log(
+    //   'scrollTop of container-right:',
+    //   $('#container-right').scrollTop(),
+    //   'scrollHeight of container-right:',
+    //   $('#container-right').get(0).scrollHeight)
+
+    var containerLeftScroll = Math.round( $('#container-left').scrollTop() + $('#container-left').innerHeight() );
+    var containerRightScroll = Math.round( $('#container-right').scrollTop() + $('#container-right').innerHeight() );
+
+    var containerLeftScrollMax = $('#container-left').get(0).scrollHeight;
+    var containerRightScrollMax = $('#container-right').get(0).scrollHeight;
 
 
-
-  // Test de scroll automatique
-
-
-  function autoScroll(){
-    $('#container-left').animate({ scrollTop: $('#container-left').get(0).scrollHeight }, 80000,"linear", function(){
-      scroll();
-    });
-  };
-
-  autoScroll();
-
-  // Le scroll automatique s'arrête au hover sur un contenu
-
-  $('.media').hover( function() {
-    $('#container-left').stop();
-  })
-
-  // Le scroll automatique reprend au mouseleave
-
-  $('.media').on('mouseleave', function() {
-    autoScroll();
-    $('#header').removeClass('not-hovered').removeClass('blurry');
-  })
+    if(containerLeftScroll == containerLeftScrollMax ){
+      console.log('Container-left bottom atteint');
+      // BUG HERE
+      $('#container-left').animate({ scrollTop: 0 }, 0, function(){
+        autoScroll();
+      });
+    }
+    if(containerRightScroll == containerRightScrollMax ){
+      console.log('Container right bottom atteint');
+      // BUG HERE
+      $('#container-right').animate({ scrollTop: 0 }, 0, function(){
+        autoScroll();
+      });
+    }
+  }
 
   // Le scroll automatique s'arrête au scroll manuel puis reprend
 
   $('.container').on('mousewheel', function(){
     $('#container-left').stop();
+    $('#container-right').stop();
     clearTimeout($.data(this, 'scrollTimer'));
       $.data(this, 'scrollTimer', setTimeout(function() {
           autoScroll();
-          console.log("Haven't scrolled in 25ms!");
+          // console.log("Haven't scrolled in 25ms!");
       }, 25));
   });
 
+  // Même scrollHeight pour les deux containers
+  
+  var lowerDivHeight = $("#container-right").scrollHeight;
+  var upperDivHeight = $("#container-left").scrollHeight;
+
+  // if(lowerDivHeight > upperDivHeight){
+  //   var difference = lowerDivHeight - upperDivHeight;
+  //   upperDiv.find('.content').last().css('margin', difference);
+  //   console.log(lowerDiv.get(0).scrollHeight, upperDiv.get(0).scrollHeight)
+  // }
+
+  // if(upperDivHeight > lowerDivHeight){
+  //   var difference = upperDivHeight - lowerDivHeight;
+  //   lowerDiv.find('.content').last().css('margin', difference);
+  //   console.log(lowerDiv.get(0).scrollHeight, upperDiv.get(0).scrollHeight)
+  // }
 
   // Gestionnaire d'événement pour ajouter les classes au survol sur la div container inférieure
   // (pour détecter le mouseenter sur le contenu même si la div container a un z-index inférieur)
-
 
   var lowerDiv = $("#container-right");
   var upperDiv = $("#container-left");
@@ -301,11 +266,12 @@ $(document).ready(function() {
                 currentDiv.addClass('hovered');
                 lowerDiv.find('.content').not(currentDiv).addClass('not-hovered');
 
-                $('#header').addClass('not-hovered').addClass('blurry');
+                // $('#header').addClass('not-hovered').addClass('blurry');
                 lowerDiv.addClass('hovered').removeClass('not-hovered');
                 upperDiv.addClass('not-hovered').removeClass('hovered');
             } else {
                 currentDiv.on('mouseleave', function() {
+                  $('#header').removeClass('not-hovered').removeClass('blurry');
                   lowerDiv.removeClass('hovered').add('not-hovered');
                   upperDiv.removeClass('not-hovered').add('hovered');
                 })
@@ -340,5 +306,55 @@ $(document).ready(function() {
     $('#header').removeClass('not-hovered').removeClass('blurry');
     // $('.black-filter').removeClass('hovered');
   });
+
+  // Scroll automatique
+
+  function autoScroll(){
+    $('#container-left').animate({ scrollTop: $('#container-left').get(0).scrollHeight }, 80000, 'linear', function(){
+      autoScroll();
+    });
+    $('#container-right').animate({ scrollTop: $('#container-right').get(0).scrollHeight }, 80000, 'linear', function(){
+      autoScroll();
+    });
+    $('#header').removeClass('not-hovered').removeClass('blurry');
+  };
+
+  autoScroll();
+
+  // Loader
+
+  var fadeInDelay;
+
+  function hideLoader(){
+    $('#loader').removeClass('loading');
+    $('#main').addClass('loaded');
+    autoScroll();
+  }
+
+  function displayLoader(){
+    $('#loader').addClass('loading')
+
+    $('#loader').on('click', function(){
+      hideLoader();
+    })
+
+    setTimeout(function() {
+      hideLoader();
+    }, 5000)
+  }
+  
+  if (sessionStorage.getItem('isNewSession')) {
+    $('#loader').removeClass('loading');
+    $('#main').addClass('loaded');
+    fadeInDelay = 0;
+    console.log('isNewSession: no')
+  } else {
+    sessionStorage.setItem('isNewSession', 'true');
+    displayLoader();
+    fadeInDelay = 1900; 
+    console.log('isNewSession: yes')
+  }
+   
+  setTimeout(fadeInDelay);
 
 });

@@ -27,10 +27,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  overflow: hidden;
 }
 
 body.about {
   overflow: hidden !important;
+}
+
+body.about header {
+  z-index: 99;
 }
 
 .wrapper {
@@ -66,18 +71,35 @@ main {
   z-index: 0;
 }
 
+/* Header and Navigation */
+
 header {
   position: fixed;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   mix-blend-mode: difference;
   transition: filter 0.5s;
   z-index: 2;
 }
 
-header a.nav {
+.nav {
+  position: absolute;
+  mix-blend-mode: difference;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.nav.left {
+  left: 0;
+}
+
+.nav.right {
+  right: 0;
+}
+
+.nav a {
   margin: 20px;
   text-transform: uppercase;
 }
@@ -87,6 +109,40 @@ header img.logo {
   height: auto;
 }
 
+/* Ascii Screensaver */
+
+#loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: #FFF;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 100000;
+}
+
+#loader video {
+  width: 100%;
+}
+
+#loader.loading {
+  opacity: 1;
+  transition: opacity 1s;
+  pointer-events: all;
+}
+
+#main.home.loaded {
+  opacity: 1;
+}
+
+#main.home {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
 /* Fader */
 
 .fade {
@@ -101,7 +157,7 @@ header img.logo {
   top: 0;
   height: 100%;
   width: 100%;
-  overflow: auto;
+  overflow: hidden;
   -webkit-overflow-scrolling: touch;
   display: block;
   transform-origin: top;
@@ -204,7 +260,7 @@ header img.logo {
 .skew.left .two.landscape {
   width: 215px;
   height: fit-content;
-  margin-bottom: -90px;
+  margin-bottom: -60px;
 }
 
 .skew.left .two.landscape .media {
@@ -249,7 +305,7 @@ header img.logo {
   max-width: 200px;
   width: fit-content;
   margin-bottom: -110px;
-  margin-left: 50px;
+  margin-left: 40px;
 }
 
 .skew.left .three.portrait .media {
@@ -347,8 +403,8 @@ header img.logo {
 .skew.right .one.landscape {
   width: 200px;
   height: fit-content;
-  margin-left: 50px;
-  margin-bottom: -120px;
+  margin-left: 80px;
+  margin-bottom: -90px;
 }
 
 .skew.right .one.landscape .media {
@@ -416,7 +472,7 @@ header img.logo {
 .skew.right .three.landscape {
   width: 350px;
   height: fit-content;
-  margin-left: -80px;
+  margin-left: -10px;
   margin-bottom: -160px;
 }
 
@@ -463,7 +519,7 @@ header img.logo {
   width: fit-content;
   height: fit-content;
   margin-left: 60px;
-  margin-bottom: -230px;
+  margin-bottom: -180px;
 }
 
 .skew.right .four.portrait .media {
@@ -538,21 +594,26 @@ header img.logo {
 
 .content.hovered .media {
   animation-name: bounce;
-  animation-duration: 0.3s;
+  animation-duration: 0.4s;
   animation-timing-function: ease-in-out;
   animation-duration: normal;
   animation-iteration-count: 1;
   transform: scale(1);
-    -webkit-transform: scale(1);
+  -webkit-transform: scale(1);
 }
 
 @keyframes bounce {
-  from {
+  0% {
+    transform: scale(0.98);
+    -webkit-transform: scale(0.98);
+  }
+
+  50% {
     transform: scale(1.05);
     -webkit-transform: scale(1.05);
   }
 
-  to {
+  100% {
     transform: scale(1);
     -webkit-transform: scale(1);
   }
@@ -614,7 +675,7 @@ header img.logo {
 
 #index-of-projects ul {
   display: inline-block;
-  max-width: 348px;
+  max-width: 580px;
 }
 
 #index-of-projects ul li {
@@ -627,9 +688,14 @@ header img.logo {
   margin-bottom: 30px;
 }
 
-#index-of-projects ul li p {
+#index-of-projects ul li p.title,
+#index-of-projects ul li p.description,
+#index-of-projects ul li p.tags {
   margin-bottom: 12px;
-  line-height: 1.2;
+}
+
+#index-of-projects ul li.year {
+  margin-bottom: 4px;
 }
 
 #index-of-projects ul li:first-child {
@@ -637,20 +703,16 @@ header img.logo {
 }
 
 #index-of-projects ul li:last-child {
-  padding-bottom: 20px;
-}
-
-#index-of-projects ul li.year {
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-
-#index-of-projects ul li.year:first-child {
-  margin-top: 0;
+  padding-bottom: 30px;
 }
 
 #index-of-projects ul li a.learn-more {
-  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#index-of-projects ul li.logo img {
+  height: 35px;
 }
 
 /* ABOUT PAGE */
@@ -665,11 +727,7 @@ header img.logo {
   align-content: space-between;
 }
 
-#about p, #about li {
-  text-transform: uppercase;
-}
-
-#about div.external-links {
+#about div.links {
   width: 100%;
 }
 
@@ -677,7 +735,7 @@ header img.logo {
   list-style-type: none;
 }
 
-#about div.external-links ul {
+#about .links {
   position: absolute;
   top: 50%;
   margin-top: 60px;
@@ -694,7 +752,12 @@ header img.logo {
   margin: 20px;
 }
 
-#about div.external-links li {
+#about ul li.title {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+#about .links li {
   margin-top: 0;
 }
 
@@ -705,6 +768,34 @@ header img.logo {
 
 #about-text {
   display: none;
+}
+
+#about div.manifesto {
+  position: absolute;
+  bottom: 50%;
+  margin-bottom: 60px;
+  text-align: center;
+  max-width: 800px;
+}
+
+#about div.manifesto p {
+  margin-bottom: 30px;
+}
+
+#about div.manifesto p:last-child {
+  margin-bottom: 15px;
+}
+
+#about .credits {
+  position: absolute;
+  bottom: 0;
+}
+
+/* FONT SIZE */
+
+.small {
+  font-size: 12px;
+  line-height: 15px;
 }
 
 /* RESPONSIVE */

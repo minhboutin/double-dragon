@@ -1,17 +1,16 @@
 <?php snippet('header') ?>
 	<div id="index-of-projects" class="wrapper">
-		<ul>
+		<ul class="small">
 			<?php $contents = $site->find('index')->children()->sortBy('year', 'asc');
-			foreach($contents as $content):?>
-				<?php if($content->isFirst() == false):
-					  $prevYear = $content->prev()->year(); ?>
-					<?php if($prevYear->toString() != $content->year()->toString()): ?>
+			foreach($contents as $content):
+				if($content->logo()->isEmpty() != true):?>
+				<li class="logo">
+					<img src="<?= $content->logo()->toFile()->url() ?>" alt="<?= $content->title() ?> Logo">
+				</li>
+				<?php endif ?>
 				<li class="year">
 					<?= $content->year() ?>
 				</li>
-					<?php endif ?>
-				
-				<?php endif ?>
 				<li id="<?= $content->id() ?>" class="project">
 					<p class="title">
 						<?= $content->title() ?>

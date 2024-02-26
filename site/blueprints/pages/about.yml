@@ -16,10 +16,13 @@ sections:
     type: fields
     fields:
       text:
-        label: About text 
+        label: Text following cursor
+        type: text
+      manifesto:
+        label: Manifesto
         type: textarea
       about:
-        label: External links
+        label: Find us
         type: structure
         fields:
           text:
@@ -35,10 +38,12 @@ sections:
           network:
             label: Social Network links
             type: text
-          picto:
-            label: Pictogram
-            type: files 
-            multiple: false
           link:
             label: Link (url)
             type: url
+      whatsapp:
+        label: Whatsapp link
+        type: url
+      mail:
+        label: E-mail
+        type: text

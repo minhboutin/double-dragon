@@ -3,4 +3,6 @@ function JSFX_StartEffects() {
   JSFX.MakeTextFlag(aboutText, "#FFF", "", 4);
 }
 
-window.onload = JSFX_StartEffects();
+window.onload = function() {
+  JSFX_StartEffects();
+}

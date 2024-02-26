@@ -42,7 +42,7 @@ sections:
         type: structure
         fields:
           media:
-            label: Image/Video
+            label: Image OR 5 seconds Video
             type: files 
             multiple: false
           content:

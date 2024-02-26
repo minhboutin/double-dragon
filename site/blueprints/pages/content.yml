@@ -6,6 +6,12 @@ sections:
   main:
     type: fields
     fields:
+      logo:
+        label: Logo of the client (white png on transparent/black background)
+        type: files 
+        query: page.images
+        multiple: false
+        required: false
       year:
         label: Year
         type: text
