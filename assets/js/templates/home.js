@@ -327,7 +327,10 @@ $(document).ready(function() {
 
   function hideLoader(){
     $('#loader').removeClass('loading');
+    $('#loader').addClass('hide');
     $('#main').addClass('loaded');
+    $('#container-left').stop();
+    $('#container-right').stop();
     autoScroll();
   }
 
@@ -344,8 +347,7 @@ $(document).ready(function() {
   }
   
   if (sessionStorage.getItem('isNewSession')) {
-    $('#loader').removeClass('loading');
-    $('#main').addClass('loaded');
+    hideLoader();
     fadeInDelay = 0;
     console.log('isNewSession: no')
   } else {
