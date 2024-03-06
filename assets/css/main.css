@@ -191,7 +191,7 @@ header img.logo.loading {
   display: none;
   opacity: 0;
   z-index: 100000;
-  transition: opacity 0.2s;
+  transition: opacity 0.4s;
 }
 
 #screensaver pre {
@@ -308,13 +308,13 @@ header img.logo.loading {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  cursor: pointer;
 }
 
 .content .media {
   transform: scale(0.98);
   transform-origin: center;
   box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.3); 
+  cursor: pointer;
 }
 
 .content video.media {
@@ -977,6 +977,13 @@ header img.logo.loading {
 }
 
 @media only screen and (max-width: 600px) {
+
+  html, body {
+    -webkit-user-select: text; /* Safari fallback only */
+    -webkit-user-select: all; /* Chrome/Safari */
+    -moz-user-select: all; /* Firefox */
+    -ms-user-select: all; /* IE10+ */
+  }
 
   /* Header */
 

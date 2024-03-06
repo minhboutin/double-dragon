@@ -63,6 +63,11 @@ $(document).ready(function() {
 
     var oldScroll = contentDiv.scrollTop;
 
+    // Play all videos
+    $('video').each(function(){
+      this.play()
+    })
+
     window.addEventListener("wheel", function (event) {
       event.preventDefault;
 
@@ -361,8 +366,13 @@ $(document).ready(function() {
   function displayScreensaver(){
     stopScroll();
 
+    document.getElementById('container-left').scrollTop = 0;
+    document.getElementById('container-right').scrollTop = 0;
+
     $('#screensaver').addClass('display');
-    $('#screensaver').addClass('fade-in');
+    setTimeout(function(){
+      $('#screensaver').addClass('fade-in');
+    }, 100)
   }
 
   function fadeInScreensaver(){
