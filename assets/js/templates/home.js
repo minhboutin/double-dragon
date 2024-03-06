@@ -40,7 +40,7 @@ $(document).ready(function() {
     checkDevice();
   });
 
-  // New scroll loop
+  // Scroll loop
 
   const setScroll = (side) => {
     // scrollable div
@@ -62,27 +62,6 @@ $(document).ready(function() {
     }
 
     var oldScroll = contentDiv.scrollTop;
-
-    function scrollLoop(){
-      event.preventDefault;
-
-      var newScrollPosition = contentDiv.scrollTop += event.deltaY;
-
-      // Apply the new scroll position to your div
-      contentDiv.scrollTop = newScrollPosition;
-
-      if (contentDiv.scrollTop >= contentDiv.scrollHeight / 2) {
-        contentDiv.scrollTop = 0;
-      } else if (contentDiv.scrollTop <= 0) {
-        if(oldScroll < contentDiv.scrollTop){
-          contentDiv.scrollTop = contentDiv.scrollHeight;
-        }
-        else {
-          contentDiv.scrollTop = (contentDiv.scrollHeight / 3) - 30;
-        }
-        oldScroll = contentDiv.scrollTop;
-      }
-    }
 
     window.addEventListener("wheel", function (event) {
       event.preventDefault;
