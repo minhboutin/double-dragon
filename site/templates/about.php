@@ -1,6 +1,7 @@
 <?php snippet('header') ?>
 	<div id="about" class="wrapper">
 		<span id="about-text"><?= $page->text() ?></span>
+		<canvas id="canvas"></canvas>
 		<div class="manifesto">
 			<?= $page->manifesto()->kt() ?>
 		</div>
@@ -51,11 +52,11 @@
 		</div>
 		<div class="credits">
 			<ul>
-				<li>
-					<b>Website by</b>
+				<li class="title">
+					Website by
 				</li>
 				<li>
-					Kim Lê Boutin
+					<a href="https://kim.studio" target="_blank" alt="Kim Boutin Studio Website">Kim Lê Boutin</a>
 				</li>
 			</ul>
 		</div>

@@ -57,3 +57,22 @@ sections:
               landscape: Landscape
               portrait: Portrait
               square: Square
+      metadataheadline:
+        label: Meta-data
+        type: headline
+      opengraph:
+        label: Open Graph 
+        type: files 
+        multiple: false 
+        required: true
+        help: '1200px x 650px'
+      metadescription:
+        label: Meta description (short)
+        type: text
+        maxLength: 150
+        help: '150 characters max'
+      metaogdescription:
+        label: Meta description (long)
+        type: textarea
+        maxLength: 300
+        help: '300 characters max'

@@ -57,17 +57,18 @@
 			<?php if ($media->type() === 'image'): ?>
 			    <img class="media" src="<?= $media->url() ?>" alt="">
 			  <?php elseif ($media->type() === 'video'): ?>
-			    <video class="media" source src="<?= $media->url() ?>" type="<?= $media->mime() ?>" autoplay muted playsinline loop>
+			    <video class="media" autoplay muted loop preload>
+			    	<source src="<?= $media->url() ?>" type="<?= $media->mime() ?>">
 			    </video>
 			<?php endif ?>
 			<div class="info">
 				<p><?= $year ?> <?= $title ?></p>
 				<p><?= $client ?></p>
 			</div>
+			<div class="filter">
+			</div>
 		</div>
 		<?php endforeach ?>
-		
-		<div id="black-filter-right" class="black-filter"></div>
 	</div>
 	<div id="container-left" class="container skew left js-loop fade">
 		<?php $contents = $page->contents()->toStructure();
@@ -127,16 +128,17 @@
 			<?php if ($media->type() === 'image'): ?>
 			    <img class="media" src="<?= $media->url() ?>" alt="">
 			  <?php elseif ($media->type() === 'video'): ?>
-			    <video class="media" source src="<?= $media->url() ?>" type="<?= $media->mime() ?>" autoplay muted playsinline loop>
+			    <video class="media" autoplay muted loop preload>
+			    	<source src="<?= $media->url() ?>" type="<?= $media->mime() ?>">
 			    </video>
 			<?php endif ?>
 			<div class="info">
 				<p><?= $year ?> <?= $title ?></p>
 				<p><?= $client ?></p>
 			</div>
+			<div class="filter">
+			</div>
 		</div>
 		<?php endforeach ?>
-		
-		<div id="black-filter-left" class="black-filter"></div>
 	</div>
 <?php snippet('footer') ?>
