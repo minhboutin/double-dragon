@@ -382,7 +382,7 @@ $(document).ready(function() {
 
   // Show screensaver when user unactive for 2 minutes
 
-  onInactive(120000, function () {
+  onInactive(60000, function () {
     displayScreensaver();
   });
 
@@ -395,13 +395,12 @@ $(document).ready(function() {
       };
   }
 
-  document.addEventListener("visibilitychange", () => {
-    displayScreensaver();   
-  });
-
-  // when the user loses focus
-  window.addEventListener("blur", () => {
-    displayScreensaver();
+  document.addEventListener("visibilitychange", (event) => {
+    if (document.visibilityState == "visible") {
+      // console.log("tab is active")
+    } else {
+      displayScreensaver();
+    }
   });
 
   // Loader and fade-in

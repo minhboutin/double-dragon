@@ -95,7 +95,7 @@ window.onload = function() {
 
   // Show screensaver when user unactive for 2 minutes
 
-  onInactive(120000, function () {
+  onInactive(60000, function () {
     displayScreensaver();
   });
 
@@ -108,15 +108,19 @@ window.onload = function() {
       };
   }
 
-  document.addEventListener("visibilitychange", () => {
-    displayScreensaver();   
+  document.addEventListener("visibilitychange", (event) => {
+    if (document.visibilityState == "visible") {
+      // console.log("tab is active")
+    } else {
+      displayScreensaver();
+    }
   });
 
   // when the user loses focus
   window.addEventListener("blur", () => {
     displayScreensaver();
   });
-  
+
   // Click on background go to home
 
   $('#index-of-projects').on('click', function(){
