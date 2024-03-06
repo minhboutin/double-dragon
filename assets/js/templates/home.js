@@ -1,19 +1,6 @@
 $(document).ready(function() {
 
-  // Le scroll automatique s'arrête au hover sur un contenu
-
-  $('.media').hover( function() {
-    $('#container-left').stop();
-    $('#container-right').stop();
-  })
-
-  // Le scroll automatique reprend au mouseleave
-
-  $('.media').on('mouseleave', function() {
-    // autoScroll();
-  })
-
-  // 1. Skew les div container et contents
+  // Skew les div container et contents
   // en fonction du ratio de la fenêtre pour l'alignement diagonal
 
   function radians_to_degrees(radians){
@@ -47,7 +34,7 @@ $(document).ready(function() {
   window.addEventListener('load',function() { 
     changeSkew();
   });
-  
+
   window.addEventListener('resize',function() { 
     changeSkew();
     checkDevice();
@@ -65,7 +52,7 @@ $(document).ready(function() {
 
     let i = 0;
 
-    for (i = 0; i < 2; i++){
+    for (i = 0; i < 1; i++){
       children.forEach(child => {
         if (child.nodeType === Node.ELEMENT_NODE && child.classList.contains('content') ) { // Ensure we're cloning element nodes
           const clone = child.cloneNode(true); // Clone the child node deeply
